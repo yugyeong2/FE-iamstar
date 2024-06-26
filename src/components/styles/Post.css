@@ -1,0 +1,28 @@
+.post {
+    border: 1px solid #ddd;
+    margin: 20px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-image {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.post-comments {
+    margin-top: 10px;
+}

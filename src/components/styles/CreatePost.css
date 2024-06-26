@@ -1,0 +1,18 @@
+.create-post {
+    padding: 20px;
+}
+
+.create-post h2 {
+    margin-bottom: 20px;
+}
+
+.create-post input,
+.create-post textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.create-post button {
+    padding: 10px 20px;
+}

@@ -1,0 +1,21 @@
+.search {
+    padding: 20px;
+}
+
+.search input {
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.search button {
+    padding: 10px;
+}
+
+.search ul {
+    list-style: none;
+    padding: 0;
+}
+
+.search li {
+    margin: 10px 0;
+}

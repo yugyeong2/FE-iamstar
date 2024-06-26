@@ -1,0 +1,13 @@
+.chat-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.chat-list .post {
+    width: 100%;
+}
