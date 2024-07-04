@@ -1,0 +1,27 @@
+.sign-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'seoulhangang', sans-serif;
+}
+
+.sign-box {
+    padding: 4rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 28rem;
+    background: white;
+    border-radius: 0.5rem;
+}
+
+.iamstar-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    font-family: 'Charmonman', serif;
+    background: linear-gradient(to right, #FF57BC, #FFD953);
+    background-clip: text; /* 그라데이션이 텍스트의 글자 내부에만 적용 */
+    -webkit-text-fill-color: transparent; /* 텍스트를 투명하게 */
+}
