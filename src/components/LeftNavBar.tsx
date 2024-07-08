@@ -11,7 +11,7 @@ const navItems = [
 
 const LeftNavBar = () => {
     return (
-        <nav className="fixed top-0 left-0 h-full w-60 border-r border-gray-200 flex flex-col items-center justify-center space-y-10 shadow-lg font-seoulhangang">
+        <nav className="fixed items-center justify-center top-0 left-0 h-full w-60 flex flex-col space-y-10 border-r border-gray-200 shadow-lg font-seoulhangang">
             <div className="fixed top-10 items-center">
                 <span className="text-2xl font-bold font-charmonman">iamstar</span>
             </div>
