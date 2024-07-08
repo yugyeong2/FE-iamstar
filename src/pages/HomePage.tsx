@@ -33,6 +33,7 @@ const HomePage = () => {
     const fetchPosts = async () => {
       try {
         const response = await api.get('/post');
+        console.log('API 응답 데이터:', response.data);
         if (Array.isArray(response.data)) {
           setPosts(response.data);
         } else {
@@ -55,9 +56,11 @@ const HomePage = () => {
   return (
     <div className="homepage-container">
       <LeftNavBar />
+
       <div className="content-container">
         <Container className="mt-5">
           {error && <div className="text-red-500">Error: {error}</div>}
+
           <div className="grid grid-cols-1 gap-4">
             {posts.map((post) => (
               <Post
@@ -75,8 +78,10 @@ const HomePage = () => {
               />
             ))}
           </div>
+
         </Container>
       </div>
+
       <ActivityStatus />
     </div>
   );
