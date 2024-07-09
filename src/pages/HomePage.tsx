@@ -5,25 +5,7 @@ import Post from '../components/Post';
 import LeftNavBar from '../components/LeftNavBar';
 import ActivityStatus from '../components/ActivityState';
 import './styles/HomePage.css';
-
-interface Comment {
-  userId: string;
-  comment: string;
-  timestamp: string;
-}
-
-interface PostData {
-  id: string;
-  userId: string;
-  username: string;
-  fullName: string;
-  content: string;
-  profileUrl: string;
-  postUrl: string;
-  likes: number;
-  comments: Comment[];
-  timestamp: string;
-}
+import { PostData } from '../interfaces/PostData';
 
 const HomePage = () => {
   const [posts, setPosts] = useState<PostData[]>([]);
