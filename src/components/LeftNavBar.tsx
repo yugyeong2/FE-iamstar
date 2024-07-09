@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import './styles/LeftNavBar.css';
 
 const navItems = [
     { name: '홈', path: '/', src: 'image/home.png' },
@@ -11,18 +12,16 @@ const navItems = [
 
 const LeftNavBar = () => {
     return (
-        <nav className="fixed items-center justify-center top-0 left-0 h-full w-60 flex flex-col space-y-10 border-r border-gray-200 shadow-lg font-seoulhangang">
-            <div className="fixed top-10 items-center">
-                <span className="text-2xl font-bold font-charmonman">iamstar</span>
+        <nav className="left-navbar">
+            <div className="logo-container">
+                <span className="logo-text">iamstar</span>
             </div>
 
-            <ul className="space-y-11">
+            <ul className="nav-list">
                 {navItems.map((item) => (
-                    <li key={item.name} className="flex items-center space-x-4">
-                        <img className="object-cover h-5 w-5 relative -top-0.5" src={item.src} alt={item.name} />
-                        <Link
-                            to={item.path}
-                            className="text-black hover:text-blue-600">
+                    <li key={item.name} className="nav-item">
+                        <img className="nav-icon" src={item.src} alt={item.name} />
+                        <Link to={item.path} className="nav-link">
                             {item.name}
                         </Link>
                     </li>
