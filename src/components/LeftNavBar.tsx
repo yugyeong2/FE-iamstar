@@ -20,8 +20,8 @@ const LeftNavBar = () => {
             <ul className="nav-list">
                 {navItems.map((item) => (
                     <li key={item.name} className="nav-item">
-                        <img className="nav-icon" src={item.src} alt={item.name} />
                         <Link to={item.path} className="nav-link">
+                            <img className="nav-icon" src={item.src} alt={item.name} />
                             {item.name}
                         </Link>
                     </li>
