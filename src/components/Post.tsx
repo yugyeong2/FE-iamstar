@@ -1,29 +1,32 @@
+import { Button } from '@mui/material';
 import './styles/Post.css';
+import { PostData } from '../interfaces/PostData';
 
-interface PostProps {
-    username: string;
-    imageUrl: string;
-    likes: number;
-    comments: string[];
-}
-
-const Post = ({ username, imageUrl, likes, comments }: PostProps) => {
+const Post = ({ username, fullName, content, profileUrl, postUrl, likes, comments }: PostData) => {
     return (
-        <div className="post">
+        <div className="post-container mx-auto">
             <div className="post-header">
-                <span>{username}</span>
+                <img src={profileUrl} alt="profile" className="post-profile-img" />
+                <div className="post-user-info">
+                    <div className="font-bold text-lg">{username}</div>
+                    <div className="text-sm text-gray-500">{fullName}</div>
+                </div>
             </div>
-            <img src={imageUrl} alt="post" className="post-image" />
-            <div className="post-actions">
-                <img src="image/heart.pngs"></img>
-                <button>좋아요 {likes}</button>
-                <button>댓글 달기</button>
-                <button>저장</button>
-            </div>
-            <div className="post-comments">
-                {comments.map((comment, index) => (
-                    <p key={index}>{comment}</p>
-                ))}
+            {postUrl && <img src={postUrl} alt="Post" className="post-image" />}
+            <div className="post-content">
+                <div className="mb-2 text-left">{content}</div>
+                <div className="flex items-center mb-2">
+                    <Button size="small" className="mr-2">좋아요 {likes}개</Button>
+                    <Button size="small">댓글 {comments.length}개</Button>
+                </div>
+                <div className="post-comments">
+                    {comments.map((comment, index) => (
+                        <div key={index} className="comment-item">
+                            <div className="font-bold mr-2">{comment.userId}</div>
+                            <div>{comment.comment}</div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

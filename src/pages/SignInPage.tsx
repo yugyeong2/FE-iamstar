@@ -13,11 +13,7 @@ const SignInPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (email.trim() !== '' && password.trim() !== '') {
-            setIsFormValid(true);
-        } else {
-            setIsFormValid(false);
-        }
+        setIsFormValid(email.trim() !== '' && password.trim() !== '');
     }, [email, password]);
 
     const handleSignIn = async (e: React.FormEvent) => {
@@ -25,8 +21,14 @@ const SignInPage = () => {
         setIsLoading(true);
         try {
             const response = await api.post('/signin', { email, password });
-            localStorage.setItem('token', response.data.token);
-            navigate('/home');
+            const token = response.data.token; // 서버에서 반환된 map에서의 token key 값
+            if (token) {
+                localStorage.setItem('token', token);
+                console.log(`Received token: ${token}`);
+                navigate('/home');
+            } else {
+                setError('로그인에 실패했습니다. 다시 시도해주세요.');
+            }
         } catch (error) {
             console.error('로그인 실패:', error);
             setError('아이디 또는 비밀번호를 잘못 입력했습니다.');
@@ -38,7 +40,7 @@ const SignInPage = () => {
     return (
         <div className="sign-container">
             <div className="sign-box">
-            <div className="iamstar-title">iamstar</div>
+                <div className="iamstar-title">iamstar</div>
 
                 {error && <div className="text-red-500 mb-4">{error}</div>}
                 <form onSubmit={handleSignIn}>
@@ -57,6 +59,7 @@ const SignInPage = () => {
                             InputProps={{
                                 style: { color: '#737373', fontFamily: 'seoulhangang' }
                             }}
+                            autoComplete="email"
                         />
                     </div>
 
@@ -74,6 +77,7 @@ const SignInPage = () => {
                             InputProps={{
                                 style: { color: '#737373' }
                             }}
+                            autoComplete="current-password"
                         />
                     </div>
 
