@@ -47,6 +47,12 @@
     overflow-y: auto;
 }
 
+.like-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+}
+
 .post-comments {
     margin-top: 16px;
     overflow-y: auto;
