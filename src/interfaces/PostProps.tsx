@@ -1,6 +1,6 @@
 import { Comment } from './Comment';
 
-export interface PostData {
+export interface PostProps {
     id: string;
     userId: string;
     username: string;
