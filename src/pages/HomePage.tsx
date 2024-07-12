@@ -5,16 +5,24 @@ import Post from '../components/Post';
 import LeftNavBar from '../components/LeftNavBar';
 import ActivityStatus from '../components/ActivityState';
 import './styles/HomePage.css';
-import { PostData } from '../interfaces/PostData';
+import { PostProps } from '../interfaces/PostProps';
 
 const HomePage = () => {
-  const [posts, setPosts] = useState<PostData[]>([]);
+  const [posts, setPosts] = useState<PostProps[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await api.get('/post');
+        const token = localStorage.getItem('token');
+        if (!token) {
+          throw new Error('No token found');
+        }
+        const response = await api.get('/post', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         console.log('API 응답 데이터:', response.data);
         if (Array.isArray(response.data)) {
           setPosts(response.data);
