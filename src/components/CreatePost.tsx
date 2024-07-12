@@ -1,10 +1,12 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import './styles/CreatePost.css';
 
 const CreatePost = () => {
     const [postImage, setPostImage] = useState<File | null>(null);
     const [content, setContent] = useState<string>('');
+    const navigate = useNavigate();
 
     const handlePostImageChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
@@ -20,13 +22,14 @@ const CreatePost = () => {
         event.preventDefault();
 
         if (!postImage) {
-            alert('Please select a post image.');
+            alert('업로드할 사진을 선택해주세요.');
             return;
         }
 
         const formData = new FormData();
         formData.append('postImage', postImage);
         formData.append('content', content);
+
 
         try {
             // Upload the image and get the URL
@@ -43,6 +46,8 @@ const CreatePost = () => {
                 postUrl,
                 content,
             });
+
+            navigate('/home');
 
             console.log('Post created:', postResponse.data);
         } catch (error) {
