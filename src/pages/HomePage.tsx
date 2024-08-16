@@ -3,7 +3,8 @@ import api from '../services/api';
 import { Container } from '@mui/material';
 import Post from '../components/Post';
 import LeftNavBar from '../components/LeftNavBar';
-import ActivityStatus from '../components/ActivityState';
+import ActivityState from '../components/ActivityState';
+import ChatBotButton from '../components/ChatBot';
 import './styles/HomePage.css';
 import { PostProps } from '../interfaces/PostProps';
 
@@ -68,11 +69,12 @@ const HomePage = () => {
               />
             ))}
           </div>
-
         </Container>
       </div>
 
-      <ActivityStatus />
+      <ActivityState />
+
+      <ChatBotButton />
     </div>
   );
 };

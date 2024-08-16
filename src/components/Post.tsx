@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import './styles/Post.css';
 import api from '../services/api';
@@ -105,7 +105,27 @@ const Post = ({ id, userId, username, fullName, content, profileUrl, postUrl, li
         return () => clearInterval(intervalId);
     }, [id]);
 
-
+    const handleDeletePost = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                throw new Error('No token found');
+            }
+            console.log(`DeletePost: Using token: ${token}`);
+            await api.delete(`/post/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            console.log('Post deleted successfully');
+        } catch (error) {
+            if (error instanceof AxiosError) {
+                console.error('Error deleting post:', error.message, error.response?.data);
+            } else {
+                console.error('Unexpected error deleting post:', error);
+            }
+        }
+    };
 
     return (
         <div className="post-container mx-auto">
@@ -114,7 +134,9 @@ const Post = ({ id, userId, username, fullName, content, profileUrl, postUrl, li
                 <div className="post-user-info">
                     <div className="font-bold text-lg">{username}</div>
                     <div className="text-sm text-gray-500">{fullName}</div>
-
+                    {currentUser === userId && (
+                        <Button size="small" onClick={handleDeletePost}>삭제</Button>
+                    )}
                 </div>
             </div>
 
