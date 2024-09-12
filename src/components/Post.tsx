@@ -128,11 +128,11 @@ const Post = ({ id, userId, username, fullName, content, profileUrl, postUrl, li
     };
 
     return (
-        <div className="post-container mx-auto">
+        <div className="mx-auto post-container">
             <div className="post-header">
                 <img src={profileUrl} alt="profile" className="post-profile-img" />
                 <div className="post-user-info">
-                    <div className="font-bold text-lg">{username}</div>
+                    <div className="text-lg font-bold">{username}</div>
                     <div className="text-sm text-gray-500">{fullName}</div>
                     {currentUser === userId && (
                         <Button size="small" onClick={handleDeletePost}>삭제</Button>
@@ -160,7 +160,7 @@ const Post = ({ id, userId, username, fullName, content, profileUrl, postUrl, li
                 <div className="post-comments">
                     {commentList.map((comment: Comment, index) => (
                         <div key={index} className="comment-item">
-                            <div className="font-bold mr-2">{comment.username}</div>
+                            <div className="mr-2 font-bold">{comment.username}</div>
                             <div>{comment.comment}</div>
                         </div>
                     ))}
